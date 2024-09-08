@@ -1,10 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+	<meta charset="UTF-8">
+	<title>Quadratic Solutions API</title>
+	<script>
+		function handleSubmit(event) {
+
+			// Get the values of the input fields
+			const aValue = document.getElementById('a').value;
+			const bValue = document.getElementById('b').value;
+			const cValue = document.getElementById('c').value;
+
+			const baseUrl = window.baseUrl; // This will be defined in your template
+
+			// Construct the redirect URL with query parameters
+			const redirectUrl = `${baseUrl}/${encodeURIComponent(aValue)}_${encodeURIComponent(bValue)}_${encodeURIComponent(cValue)}`;
+			window.location.href = redirectUrl;
+			console.log(redirectUrl);
+		}
+	</script>
+	<style>
+		body {
+            color: #0d1821;
+            background-color: #f0f4ef;
+            font-family: Helvetica, fantasy
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                color: #f0f4ef;
+                background-color: #0d1821;
+            }
+
+	        a {
+                background-color: #0d1821;
+	        }
+
+            a:link {
+	            all: unset;
+                --theme-link-color: #f0f4ef !important;
+                cursor: pointer;
+                display: inline;
+                text-decoration: underline;
+            }
+            a:visited {
+                --theme-link-color-visited: #4f2dbf !important
+            }
+
+        }
+	</style>
 </head>
 <body>
-$END$
+	<h1>
+		Quadratic Solutions API Home
+	</h1>
+	<hr>
+	<h4>This is the home for the Quadratic Solutions API built by Goutham Pedinedi using the REST API Architecture</h4>
+	<hr>
+	<p>URL format: <em>site url</em>/v1.0/<em>a_b_c</em></p>
+	<p>URL example: <em>site url</em>/v1.0/2_5_-4/</p>
+	<p>{{data|safe}}</p>
+	<hr>
+	<a href="{{ url_for('changelog') }}">Changelog</a>
+	<hr>
+
+	<label for="a">a:</label>
+	<input type="text" id="a" name="a">
+	<label for="b">b:</label>
+	<input type="text" id="b" name="b">
+    <label for="c">c:</label>
+    <input type="text" id="c" name="c">
+	<input type="submit" value="Submit" onclick=handleSubmit()>
+	<script>
+		window.baseUrl = "{{ url_for('changelog') }}"; // Set baseUrl from Flask
+	</script>
+	<script>
+		console.log("Base URL: " + window.baseUrl);
+	</script>
+
 </body>
 </html>

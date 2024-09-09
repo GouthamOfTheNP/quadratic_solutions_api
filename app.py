@@ -13,7 +13,7 @@ def home():
         return "An error occurred while processing your request.", 500
 
 
-@app.route('/v1.1')
+@app.route('/v1.2')
 def changelog():
     try:
         return render_template("changelog.html")
@@ -22,7 +22,7 @@ def changelog():
         return "An error occurred while processing your request.", 500
 
 
-@app.route('/v1.1/<a>_<b>_<c>')
+@app.route('/v1.2/<a>_<b>_<c>')
 def solutions(a, b, c):
     try:
         try:
@@ -34,8 +34,8 @@ def solutions(a, b, c):
             negative = "Cannot calculate due to non-integer types"
         else:
             try:
-                positive = (-b+math.sqrt((b**2)-(4*a*c)))
-                negative = (-b-math.sqrt((b**2)-(4*a*c)))
+                positive = (-b+math.sqrt((b**2)-4*(a*c)))/(2*a)
+                negative = (-b-math.sqrt((b**2)-4*(a*c)))/(2*a)
             except ValueError:
                 positive = "Not real solution"
                 negative = "Not real solution"

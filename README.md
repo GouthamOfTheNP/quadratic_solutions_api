@@ -59,5 +59,3 @@ A simple Flask web application that allows users to calculate the solutions of a
     Example: `/v1.2/1_-3_2` → calculates the roots of x² - 3x + 2 = 0.  
 
 The results page will display the entered coefficients and the calculated roots (positive and negative solutions).
-
----
